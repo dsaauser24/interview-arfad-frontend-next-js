@@ -1,3 +1,4 @@
+"use client";
 import axios from "axios";
 import { useFormik } from "formik";
 import { NextPage } from "next";
@@ -41,17 +42,23 @@ const RegisterPage: NextPage = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} className="flex justify-center mt-10">
-      <div className="w-2/5 bg-[#FDF9F2] p-10 rounded-xl border-4 border-black shadow-solid-md flex flex-col gap-1">
+    <form onSubmit={formik.handleSubmit} className="flex justify-center mt-10 ">
+      <div className="w-2/5 bg-black p-10 rounded-xl border-4 border-black shadow-solid-md flex flex-col gap-1">
         <h1 className="font-extrabold text-2xl text-center mb-3">Register</h1>
         <p className="text-center">{message}</p>
         <label htmlFor="email">E-mail</label>
-        <input type="email" id="email" {...formik.getFieldProps("email")} />
+        <input
+          className="text-black"
+          type="email"
+          id="email"
+          {...formik.getFieldProps("email")}
+        />
         {formik.touched.email && formik.errors.email ? (
           <p className="mb-3">{formik.errors.email}</p>
         ) : null}
         <label htmlFor="password">Password</label>
         <input
+          className="text-black"
           type="password"
           id="password"
           {...formik.getFieldProps("password")}
@@ -61,12 +68,17 @@ const RegisterPage: NextPage = () => {
         ) : null}
         <div className="mb-3"></div>
         <label htmlFor="name">Full Name</label>
-        <input id="name" type="text" {...formik.getFieldProps("name")} />
+        <input
+          className="text-black"
+          id="name"
+          type="text"
+          {...formik.getFieldProps("name")}
+        />
         {formik.touched.name && formik.errors.name ? (
           <p className="mb-3">{formik.errors.name}</p>
         ) : null}
         <div className="mb-3"></div>
-        <p className="text-end mb-5">
+        <p className="text-center mb-5">
           {"Already have account?"}{" "}
           <Link href={"/auth"} className="font-semibold">
             Login Here
